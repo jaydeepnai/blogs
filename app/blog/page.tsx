@@ -1,5 +1,5 @@
 import ListLayout from '@/layouts/ListLayoutWithTags'
-export const posts = [
+const posts = [
   {
     slug:"slug", 
     createdAt:"date", 
