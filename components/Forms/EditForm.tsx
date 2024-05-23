@@ -73,7 +73,7 @@ const BlogPostEditForm:React.FC<BlogPostFormDateProps> = ({
             content: values.content,
             createdAt: Date.now() ,
             slug: values.slug ,
-            author: JSON.parse(Cookies.get("user")).userId,
+            author: JSON.parse(Cookies.get("user")!).userId,
             tags: values.tags,
           }
           const response = await fetch('https://blogify-jaydeepnai-jaydeepnais-projects.vercel.app/api/v1/blogs/'+formData._id, {

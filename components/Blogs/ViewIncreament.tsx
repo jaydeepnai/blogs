@@ -23,7 +23,7 @@ interface PostInfoProps {
 }
 const PostInfo:React.FC<PostInfoProps> = ({ postId, postInfo:{email,date} }) => {
   const [View, setView] = useState(0)
-  const user = Cokkies.get("user") == undefined ? {} :JSON.parse(Cokkies.get("user")) 
+  const user = Cokkies.get("user") === undefined ? {} :JSON.parse(Cokkies.get("user")!) 
   const [likes, setLikes] = useState([])
   const [dislikes, setDislikes] = useState([])
   const [liked, setLiked] = useState(false)

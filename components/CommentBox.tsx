@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import Cookie from 'js-cookie'
 
-const CommentsSection = ({ postId }) => {
+const CommentsSection = ({ postId}) => {
   const [newComment, setNewComment] = useState('')
   const [comments, setComments] = useState([])
   const [User, setUser] = useState(() => {
