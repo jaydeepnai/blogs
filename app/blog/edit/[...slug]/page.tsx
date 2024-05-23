@@ -1,6 +1,6 @@
 import BlogPostEditForm from '@/components/Forms/EditForm'
 
-async function getData(postId) {
+async function getData(postId:String) {
   const res = await fetch('https://blogify-jaydeepnai-jaydeepnais-projects.vercel.app/api/v1/blogs/' + postId, { cache: 'no-store' })
   if (!res) {
     throw new Error('Failed to fetch data')
