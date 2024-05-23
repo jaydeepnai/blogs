@@ -6,14 +6,14 @@ import Link from 'next/link'
 import CommentsSection from '@/components/CommentBox'
 import PostInfo from '@/components/Blogs/ViewIncreament'
 
-const getData= async(postId)=> {
+const getData= async(postId:String)=> {
   try {
     const res = await fetch('https://blogify-jaydeepnai-jaydeepnais-projects.vercel.app/api/v1/blogs/'+postId,{ next : {revalidate: 20}, cache: 'no-store', })
     if (!res) {
       throw new Error('Failed to fetch data')
     }
     return res.json()
-  } catch (error) {
+  } catch (error:any) {
     console.log(error.message)
     return null
   }
@@ -21,7 +21,7 @@ const getData= async(postId)=> {
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = params.slug.join('/')
-  const post = await getData(slug)
+  const post = await getData(slug as String)
   if (!post) {
     return notFound()
   }
@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
             <div className="space-y-1 text-left">
               <div>
                 <PageTitle>{author.username} About "{title}"</PageTitle>
-                <PostInfo postInfo={{email:author.email,date:date,dislikes:dislikes,likes:likes}} postId={slug} />
+                <PostInfo postInfo={{email:author.email,date:date}} postId={slug} />
               </div>
             </div>
           </header>
@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
                       Tags
                     </h2>
                     <div className="flex flex-wrap">
-                      {tags.map((tag) => (
+                      {tags.map((tag:any) => (
                         <Tag key={tag} text={tag} />
                       ))}
                     </div>

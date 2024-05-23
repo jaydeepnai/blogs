@@ -12,7 +12,16 @@ import { toast } from 'react-toastify'
 import Cokkies from "js-cookie"
 
 
-const PostInfo = ({ postId, postInfo: { email, date} }) => {
+declare type postInfo = {
+  email: string,
+  date: string
+} 
+
+interface PostInfoProps {
+  postId : string;
+  postInfo : postInfo
+}
+const PostInfo:React.FC<PostInfoProps> = ({ postId, postInfo:{email,date} }) => {
   const [View, setView] = useState(0)
   const user = Cokkies.get("user") == undefined ? {} :JSON.parse(Cokkies.get("user")) 
   const [likes, setLikes] = useState([])
@@ -38,7 +47,7 @@ const PostInfo = ({ postId, postInfo: { email, date} }) => {
           setLiked(Likes.includes(user.userId))
           setView(result.views)
         }
-      } catch (error) {
+      } catch (error:any) {
         console.error(error.message)
         toast.error('Failed to increment views')
       }
@@ -68,7 +77,7 @@ const PostInfo = ({ postId, postInfo: { email, date} }) => {
           setDisliked(false)
         }
         setLiked(true)
-      } catch (error) {
+      } catch (error:any) {
         console.error(error.message)
         toast.error('Failed to like post')
       }
@@ -98,7 +107,7 @@ const PostInfo = ({ postId, postInfo: { email, date} }) => {
       }
       setDisliked(true)
       toast.success('Disliked the post!')
-    } catch (error) {
+    } catch (error:any) {
       console.error(error.message)
       toast.error('Failed to dislike post')
     }
