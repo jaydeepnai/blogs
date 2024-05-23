@@ -11,7 +11,7 @@ const getData= async()=> {
     }
     return res.json()
   }
-  catch(error){
+  catch(error:any){
     toast.error(error?.message ? error?.message : error?.msg)
   }
 }
@@ -20,7 +20,7 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
   const posts = await getData()
   const tag = params.tag
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
-  const filteredPosts = posts.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)
+  const filteredPosts = posts.filter((post:any) => post.tags && post.tags.map((t:any) => slug(t)).includes(tag)
   )
   return <ListLayout posts={filteredPosts} title={title} />
 }
