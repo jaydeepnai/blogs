@@ -11,9 +11,7 @@ const Header = () => {
   const path = usePathname()
   const router = useRouter()
   const [User, setUser] = useState({})
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+
   const headerNavLinks = User?.userId
     ? [
         { title: 'Blog', href: '/home' },
@@ -27,6 +25,10 @@ const Header = () => {
         { title: 'SignUp', href: '/signup' },
         { title: 'SignIn', href: '/signin' },
       ]
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     if (isClient) {
@@ -46,7 +48,6 @@ const Header = () => {
       </div>
       <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
         {headerNavLinks
-          .filter((link) => link.href !== '/')
           .map((link) => {
             return link.title == "Logout" ?(
               <div className='hidden cursor-pointer font-medium text-gray-900 dark:text-gray-100 sm:block' onClick={()=>{

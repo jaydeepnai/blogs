@@ -93,7 +93,7 @@ const BlogList = () => {
 
   useEffect(() => {  
     getAuthorBlogs()
-  }, [getAuthorBlogs])
+  }, [])
 
   return (
     <div>

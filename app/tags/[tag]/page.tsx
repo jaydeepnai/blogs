@@ -12,7 +12,7 @@ const getData= async()=> {
     return res.json()
   }
   catch(error:any){
-    toast.error(error?.message ? error?.message : error?.msg)
+    console.log(error.message)
   }
 }
 
